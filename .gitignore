@@ -1,0 +1,8 @@
+# pixi env
+.pixi/
+
+__pycache__/
+.ruff_cache/
+
+# converter output
+*.tsv.gz

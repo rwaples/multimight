@@ -1,0 +1,24 @@
+# multimight: turns simACE replicates into EPIMIGHT input pools.
+[workspace]
+name = "multimight"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+requires-pixi = ">=0.82,<0.83"
+
+[dependencies]
+# the converter
+r-base = "4.5.*"
+r-arrow = "*"
+"r-data.table" = "*"
+# check/ compares the converter's counts with pedigree-graph
+python = "3.14.*"
+numpy = "2.5.*"
+polars = "1.44.*"
+ruff = "0.17.*"
+
+[pypi-dependencies]
+pedigree-graph = "==0.13.0"
+
+[tasks]
+convert = "Rscript R/simace_to_epimight.R"
+check = "python check/relative_counts.py"
